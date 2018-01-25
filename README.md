@@ -6,7 +6,7 @@ Collection of my custom components for the [Home Assistant](https://home-assista
 
 Support for the [Doomsday Clock](https://en.wikipedia.org/wiki/Doomsday_Clock) from the [Bulletin of the Atomic Scientists](https://thebulletin.org/).
 
-Helps monitor how close humanity is to its own destruction, either through nuclear war or climate change. Useful in case egocentric psychopaths keep on playing Russian roulette with humanity's future. Makes a great addition to your nuclear bunker's Home Assistant build!
+Helps monitor how close humanity is a man-made global catastrophe, its own destruction if you will, either through nuclear war or climate change. Useful in case egocentric psychopaths keep on playing Russian roulette with humanity's future. Makes a great addition to your fallout shelter's Home Assistant build!
 
 The clock doesn't change often, at most once a year, and offers no API. Since we rely on web scraping of their web site the component has a goodwill throttle of 1-hour, but it would be best to set the scan interval for the sensor to 1 day (86400 seconds) or more.
 
