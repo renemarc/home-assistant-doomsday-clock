@@ -18,13 +18,14 @@ Code inspired by [mattbierner's Node Doomsday Clock API](https://github.com/matt
 
 ### Installation
 
+To enable the Doomsday Clock sensor in your installation:
+
 1. Copy file `sensor/doomsday_clock.py` to `your_config_dir/custom_components/sensor` directory (create folder if necessary). 
-1. Add the sensor to your configuration (see below).
+1. Add the sensor to your `configuration.yaml` (see below).
 1. Restart Home Assistant.
 
 ```yaml
 # Example configuration.yaml entry
-
 sensor:
   - platform: doomsday_clock
     name: Doomsday
@@ -33,9 +34,10 @@ sensor:
 
 ### Configuration variables
 
-- **name** (_Optional_): Name of sensor. (default = "Doomsday Clock")
-- **scan_interval** (_Optional_): Number of seconds between polls. (minimum = 3600 seconds).
-
+- **name** _(string) (optional)_ Name of sensor. (default = "Doomsday Clock")
+- **scan_interval** _(number) (optional)_ Number of seconds between polls. (minimum = 3600 seconds).
+- **unit_of_measurement** _(string) (optional)_ Defines the units of measurement of the sensor. (default = "min").
+- **value_template** _([template](https://home-assistant.io/docs/configuration/templating/)) (optional)_ Defines a template to manipulate the state of the sensor.
 
 
 
