@@ -4,13 +4,13 @@ Collection of my custom components for the [Home Assistant](https://home-assista
 
 ## Doomsday Clock Component
 
-Support for the [Doomsday Clock](https://thebulletin.org/timeline) from the Bulletin of the Atomic Scientists.
+Support for the [Doomsday Clock](https://en.wikipedia.org/wiki/Doomsday_Clock) from the [Bulletin of the Atomic Scientists](https://thebulletin.org/).
 
 Helps monitor how close humanity is to its own destruction, either through war or pollution. Useful in case egocentric psychopaths keep on playing Russian roulette with humanity's future. Makes a great addition to your nuclear bunker's Home Assistant build!
 
 The clock doesn't change often, at most once a year, and offers no API. Since we rely on web scraping of their web site the component has a goodwill throttle of 1-hour, but it would be best to set the scan interval for the sensor to 1 day (86400 seconds) or more.
 
-Code inspired by [](https://github.com/mattbierner/MinutesToMidnight)
+Code inspired by [mattbierner's Node Doomsday Clock API](https://github.com/mattbierner/MinutesToMidnight).
 
 ### Screenshots
 
@@ -18,7 +18,7 @@ Code inspired by [](https://github.com/mattbierner/MinutesToMidnight)
 
 ### Installation
 
-1. Copy file `sensor/doomsday_clock.py` to your `config_dir/custom_components/sensor` directory (create folder if missing). 
+1. Copy file `sensor/doomsday_clock.py` to `your_config_dir/custom_components/sensor` directory (create folder if necessary). 
 1. Add the sensor to your configuration (see below).
 1. Restart Home Assistant.
 
