@@ -32,7 +32,7 @@ DEFAULT_NAME = "Doomsday Clock"
 DEFAULT_ICON = 'mdi:nuke'
 DEFAULT_UNIT_OF_MEASUREMENT = 'min'
 
-CONF_ATTRIBUTION = "Threat assessment by The Bulletin of the Atomic Scientists"
+CONF_ATTRIBUTION = "Threat assessment by the Bulletin of the Atomic Scientists"
 CONF_RESOURCE = 'https://thebulletin.org/doomsday-clock/past-announcements/'
 CONF_SELECTOR = '.uabb-infobox-title'
 
