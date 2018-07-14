@@ -33,8 +33,8 @@ DEFAULT_ICON = 'mdi:nuke'
 DEFAULT_UNIT_OF_MEASUREMENT = 'min'
 
 CONF_ATTRIBUTION = "Bulletin of the Atomic Scientists"
-CONF_RESOURCE = 'https://thebulletin.org/timeline'
-CONF_SELECTOR = '#content .view-content .node-title'
+CONF_RESOURCE = 'https://thebulletin.org/doomsday-clock/past-announcements/'
+CONF_SELECTOR = '.uabb-infobox-title'
 
 MIN_TIME_BETWEEN_UPDATES = timedelta(hours=1)
 
