@@ -36,7 +36,7 @@ CONF_ATTRIBUTION = "Threat assessment by the Bulletin of the Atomic Scientists"
 CONF_RESOURCE = 'https://thebulletin.org/doomsday-clock/past-announcements/'
 CONF_SELECTOR = '.uabb-infobox-title'
 
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(hours=1)
+MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(hours=6)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
