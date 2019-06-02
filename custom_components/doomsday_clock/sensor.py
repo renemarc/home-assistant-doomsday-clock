@@ -14,9 +14,11 @@ import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
 
-VERSION = '1.2.0'
+VERSION = '1.3.0'
 
 _LOGGER = logging.getLogger(__name__)
+
+DOMAIN = 'sensor'
 
 DEFAULT_NAME = "Doomsday Clock"
 DEFAULT_ICON = 'mdi:nuke'
