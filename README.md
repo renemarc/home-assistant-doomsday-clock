@@ -38,16 +38,16 @@ The Doomsday Clock helps monitor how close humanity is to a man-made global cata
     </figure>
 </div>
 
-The clock doesn't change often, at most once a year, and offers no API. Since we rely on web scraping of their web site the component has a goodwill throttle of 6 hours (21600 seconds), but it would be best to set the scan interval for the sensor to 1 day (86400 seconds) or more.
+The clock doesn't change often, at most once a year, and offers no API. Since we rely on web scraping of their web site the component has a goodwill throttle of 6 hours (21,600 seconds), but it would be best to set the scan interval for the sensor to 1 day (86,400 seconds) or more.
 
 <p align="right"><a href="#" title="Back to top">⬆️</a></p>
 
 
 ## Usage
 
-To enable the Doomsday Clock sensor in your installation:
+To enable the Doomsday Clock sensor in your installation (Home Assistant v0.88+):
 
-1. Copy the file [`doomsday_clock.py`](doomsday_clock.py) to your configuration's `/custom_components/sensor/` directory (create it if necessary). 
+1. Copy the folder [`/doomsday_clock/`](./doomsday_clock) to your configuration's `/custom_components/` directory.
 2. Add the sensor to your `configuration.yaml` file ([see below](#configuration)).
 3. Restart Home Assistant.
 4. ~~Despair.~~ 😭
@@ -73,7 +73,7 @@ sensor:
     scan_interval: 86400
 ```
 
-- **icon** _(string) (optional)_ Specify a [Material Design Icon](https://materialdesignicons.com) to illustrate the sensor. (default = `mdi:nuke`)
+- **icon** _(string) (optional)_ Specify a [Material Design Icon](https://materialdesignicons.com) to illustrate the sensor. (default = [`mdi:nuke`](https://materialdesignicons.com/icon/nuke))
 - **name** _(string) (optional)_ Name of sensor. (default = `Doomsday Clock`)
 - **scan_interval** _(number) (optional)_ Number of seconds between polls. (minimum = `21600` seconds [6 hours])
 - **unit_of_measurement** _(string) (optional)_ Defines the units of measurement of the sensor. (default = `min`)
