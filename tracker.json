@@ -2,10 +2,10 @@
   "sensor.doomsday_clock": {
     "changelog": "https://github.com/renemarc/home-assistant-doomsday-clock/releases/latest",
     "local_location": "/custom_components/doomsday_clock/sensor.py",
-    "remote_location": "https://raw.githubusercontent.com/renemarc/home-assistant-doomsday-clock/develop/custom_components/doomsday_clock/sensor.py",
+    "remote_location": "https://raw.githubusercontent.com/renemarc/home-assistant-doomsday-clock/master/custom_components/doomsday_clock/sensor.py",
     "resources": [],
     "updated_at": "2019-06-03",
-    "version": "1.3.0",
+    "version": "2.0.1",
     "visit_repo": "https://github.com/renemarc/home-assistant-doomsday-clock"
   }
 }
