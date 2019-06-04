@@ -1,32 +1,24 @@
-"""
-Support for Doomsday Clock from the Bulletin of the Atomic Scientists.
-
-Convert data into parsable time from the Timeline page at
-https://thebulletin.org/doomsday-clock/past-announcements/
-
-Based on prior work by Matt Bierner.
-See https://github.com/mattbierner/MinutesToMidnight
-
-For more details about this platform, please refer to the documentation at
-https://github.com/renemarc/home_assistant_doomsday_clock/
-"""
+"""Sensor platform for Doomsday Clock."""
 import datetime
 import logging
 import re
+
 import voluptuous as vol
 
 from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.components.sensor.rest import RestData
+from homeassistant.components.rest.sensor import RestData
 from homeassistant.const import (
     ATTR_ATTRIBUTION, CONF_NAME, CONF_ICON, CONF_UNIT_OF_MEASUREMENT,
     CONF_VALUE_TEMPLATE, STATE_UNKNOWN)
+import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import Throttle
-import homeassistant.helpers.config_validation as cv
 
-REQUIREMENTS = ['beautifulsoup4==4.6.0']
+VERSION = '1.3.0'
 
 _LOGGER = logging.getLogger(__name__)
+
+DOMAIN = 'sensor'
 
 DEFAULT_NAME = "Doomsday Clock"
 DEFAULT_ICON = 'mdi:nuke'
@@ -46,7 +38,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_VALUE_TEMPLATE): cv.template,
 })
 
-def setup_platform(hass, config, add_devices, discovery_info=None):
+def setup_platform(hass, config, add_entities, discovery_info=None):
     """Set up the Doomsday Clock sensor."""
     name = config.get(CONF_NAME)
     resource = CONF_RESOURCE
@@ -68,7 +60,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
         _LOGGER.error("Unable to fetch URL: %s", resource)
         return False
 
-    add_devices([
+    add_entities([
         DoomsdayClockSensor(rest, name, selector, unit_of_measurement, icon,
             value_template)
         ], True)
