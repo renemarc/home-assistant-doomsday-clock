@@ -7,8 +7,9 @@
 [![Custom Updater][img-custom-updater]][link-custom-updater]
 [![Community Forum][img-forum]][link-forum]
 [![Maintainer][img-maintainer]][link-maintainer]
+[![All Contributors][img-contributors]](#contributors-)
+[![PRs Welcome][img-prs]](#contributing-)
 [![License][img-license]][link-license]
-[![PRs Welcome][img-prs]][link-prs]
 [![Tweet][img-twitter]][link-twitter]
 
 Add support for the [Doomsday Clock](https://en.wikipedia.org/wiki/Doomsday_Clock) world threat assessment index from the [Bulletin of the Atomic Scientists](https://thebulletin.org/doomsday-clock/) inside the [Home Assistant](https://home-assistant.io/) open-source home automation platform.
@@ -97,15 +98,28 @@ sensor:
 
 ## Contributing 📝
 
-Want to suggest some code improvements? Fork this repo and [open a pull request](./compare) so that all can benefit! 😃
+Want to suggest some code improvements? [Check out the quick contributing guide](./CONTRIBUTING.md)! 😃
+
+<p align="right"><a href="#top" title="Back to top">🔝</a></p>
+
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://allcontributors.org) specification. Contributions of any kind are welcome! 😃
 
 <p align="right"><a href="#top" title="Back to top">🔝</a></p>
 
 
 ## Thanks 💕
 
-- [@mattbierner](https://github.com/mattbierner) for the inspiration from his [MinutesToMidnight](https://github.com/mattbierner/MinutesToMidnight) Node.js library.
 - [@custom_components](https://github.com/custom-components) for their [component blueprint](https://github.com/custom-components/blueprint) and Home Assistant integration tools.
+- [@mattbierner](https://github.com/mattbierner) for the inspiration from his [MinutesToMidnight](https://github.com/mattbierner/MinutesToMidnight) Node.js library.
 - The [Bulletin of the Atomic Scientists](https://thebulletin.org/doomsday-clock/past-announcements/) for keeping the world in check since 1947.
 
 <div align="center">
@@ -135,6 +149,7 @@ Footer ends.
 Image references.
 -->
 
+[img-contributors]:https://img.shields.io/badge/all_contributors-1-orange.svg?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiICB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgIDxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xMiwyLjVMOC40Miw4LjA2TDIsOS43NEw2LjIsMTQuODhMNS44MiwyMS41TDEyLDE5LjA5TDE4LjE4LDIxLjVMMTcuOCwxNC44OEwyMiw5Ljc0TDE1LjU4LDguMDZMMTIsMi41TTkuMzgsMTAuNUMxMCwxMC41IDEwLjUsMTEgMTAuNSwxMS42M0ExLjEyLDEuMTIgMCAwLDEgOS4zOCwxMi43NUM4Ljc1LDEyLjc1IDguMjUsMTIuMjUgOC4yNSwxMS42M0M4LjI1LDExIDguNzUsMTAuNSA5LjM4LDEwLjVNMTQuNjMsMTAuNUMxNS4yNSwxMC41IDE1Ljc1LDExIDE1Ljc1LDExLjYzQTEuMTIsMS4xMiAwIDAsMSAxNC42MywxMi43NUMxNCwxMi43NSAxMy41LDEyLjI1IDEzLjUsMTEuNjNDMTMuNSwxMSAxNCwxMC41IDE0LjYzLDEwLjVNOSwxNUgxNUMxNC41LDE2LjIxIDEzLjMxLDE3IDEyLDE3QzEwLjY5LDE3IDkuNSwxNi4yMSA5LDE1WiIgLz4KPC9zdmc+&maxAge=300
 [img-custom-updater]:https://img.shields.io/badge/custom__updater-true-success.svg?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiICB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgIDxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0yMSwxMC4xMkgxNC4yMkwxNi45Niw3LjNDMTQuMjMsNC42IDkuODEsNC41IDcuMDgsNy4yQzQuMzUsOS45MSA0LjM1LDE0LjI4IDcuMDgsMTdDOS44MSwxOS43IDE0LjIzLDE5LjcgMTYuOTYsMTdDMTguMzIsMTUuNjUgMTksMTQuMDggMTksMTIuMUgyMUMyMSwxNC4wOCAyMC4xMiwxNi42NSAxOC4zNiwxOC4zOUMxNC44NSwyMS44NyA5LjE1LDIxLjg3IDUuNjQsMTguMzlDMi4xNCwxNC45MiAyLjExLDkuMjggNS42Miw1LjgxQzkuMTMsMi4zNCAxNC43NiwyLjM0IDE4LjI3LDUuODFMMjEsM1YxMC4xMk0xMi41LDhWMTIuMjVMMTYsMTQuMzNMMTUuMjgsMTUuNTRMMTEsMTNWOEgxMi41WiIgLz4KPC9zdmc+&maxAge=86400
 [img-forum]:https://img.shields.io/badge/community-forum-brightgreen.svg?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiICB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgIDxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xNywxMlYzQTEsMSAwIDAsMCAxNiwySDNBMSwxIDAgMCwwIDIsM1YxN0w2LDEzSDE2QTEsMSAwIDAsMCAxNywxMk0yMSw2SDE5VjE1SDZWMTdBMSwxIDAgMCwwIDcsMThIMThMMjIsMjJWN0ExLDEgMCAwLDAgMjEsNloiIC8+Cjwvc3ZnPg==&maxAge=21600
 [img-github-release]:https://img.shields.io/github/release/renemarc/home-assistant-doomsday-clock/all.svg?logo=github&logoColor=white&maxAge=21600
