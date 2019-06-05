@@ -1,10 +1,11 @@
 {
   "files": [
+    "info.md",
     "README.md"
   ],
   "imageSize": 100,
   "commit": false,
-  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?logo=github&maxAge=21600)](#contributors-)",
+  "badgeTemplate": "https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg",
   "contributors": [
     {
       "login": "renemarc",
