@@ -7,7 +7,7 @@
 [![Custom Updater][img-custom-updater]][link-custom-updater]
 [![Community Forum][img-forum]][link-forum]
 [![Maintainer][img-maintainer]][link-maintainer]
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?logo=angellist)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?logo=angellist)](#contributors-)
 [![PRs Welcome][img-prs]][link-prs]
 [![License][img-license]][link-license]
 [![Tweet][img-twitter]][link-twitter]
@@ -98,15 +98,15 @@ sensor:
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
 <table><tr><td align="center"><a href="https://renemarc.com/"><img src="https://avatars3.githubusercontent.com/u/13276793?v=4" width="100px;" alt="René-Marc Simard"/><br /><sub><b>René-Marc Simard</b></sub></a><br /><a href="https://github.com/renemarc/home-assistant-doomsday-clock/commits?author=renemarc" title="Code">💻</a> <a href="https://github.com/renemarc/home-assistant-doomsday-clock/commits?author=renemarc" title="Documentation">📖</a></td><td align="center"><a href="https://github.com/jamiepryer"><img src="https://avatars3.githubusercontent.com/u/48566948?v=4" width="100px;" alt="jamiepryer"/><br /><sub><b>jamiepryer</b></sub></a><br /><a href="https://github.com/renemarc/home-assistant-doomsday-clock/issues?q=author%3Ajamiepryer" title="Bug reports">🐛</a></td><td align="center"><a href="http://johntdyer.com"><img src="https://avatars3.githubusercontent.com/u/58234?v=4" width="100px;" alt="John Dyer"/><br /><sub><b>John Dyer</b></sub></a><br /><a href="#ideas-johntdyer" title="Ideas, Planning, & Feedback">🤔</a></td></tr></table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://allcontributors.org) specification. Want to suggest some code improvements? [Check out the quick contributing guide!](./CONTRIBUTING.md) Contributions of any kind are welcome! 😃
+[emoji key](https://allcontributors.org/docs/en/emoji-key)
+
+This project follows the [all-contributors](https://allcontributors.org) specification. Want to suggest some code improvements? [Check out the quick contributing guide.](./CONTRIBUTING.md) Contributions of any kind are welcome! 😃
 
 <p align="right"><a href="#top" title="Back to top">🔝</a></p>
 
