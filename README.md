@@ -1,4 +1,5 @@
 # Home Assistant Doomsday Clock sensor &nbsp; [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Display%20the%20Doomsday%20Clock%20inside%20your%20fallout%20shelter%27s%20Home%20Assistant!&url=https://github.com/renemarc/home-assistant-doomsday-clock&via=renemarc&hashtags=HomeAssistant,Python,Doomsday,Doomsday_Clock,Peace)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 [![Price][img-price]][link-license]
 [![Sensor][img-hass]][link-hass]
@@ -139,3 +140,15 @@ Link references.
 [link-license]:LICENSE
 [link-maintainer]:https://github.com/renemarc/
 [link-repo]:https://github.com/renemarc/home-assistant-doomsday-clock
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://renemarc.com/"><img src="https://avatars3.githubusercontent.com/u/13276793?v=4" width="100px;" alt="René-Marc Simard"/><br /><sub><b>René-Marc Simard</b></sub></a><br /><a href="https://github.com/renemarc/home-assistant-doomsday-clock/commits?author=renemarc" title="Code">💻</a> <a href="https://github.com/renemarc/home-assistant-doomsday-clock/commits?author=renemarc" title="Documentation">📖</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
