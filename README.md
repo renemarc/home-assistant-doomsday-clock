@@ -7,6 +7,7 @@
 [![Custom Updater][img-custom-updater]][link-custom-updater]
 [![Community Forum][img-forum]][link-forum]
 [![Maintainer][img-maintainer]][link-maintainer]
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?logo=angellist)](#contributors-)
 [![PRs Welcome][img-prs]][link-prs]
 [![License][img-license]][link-license]
 [![Tweet][img-twitter]][link-twitter]
