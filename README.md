@@ -104,9 +104,7 @@ sensor:
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-[emoji key](https://allcontributors.org/docs/en/emoji-key)
-
-This project follows the [all-contributors](https://allcontributors.org) specification. Want to suggest some code improvements? [Check out the quick contributing guide.](./CONTRIBUTING.md) Contributions of any kind are welcome! 😃
+This project follows the [all-contributors](https://allcontributors.org) specification ([emoji key available here](https://allcontributors.org/docs/en/emoji-key)). Found a bug, want to suggest an idea or share some improvements? [Contributions of any kind are welcome!](./CONTRIBUTING.md) 😃
 
 <p align="right"><a href="#top" title="Back to top">🔝</a></p>
 
