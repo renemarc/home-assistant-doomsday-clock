@@ -8,7 +8,7 @@
 [![Community Forum][img-forum]][link-forum]
 [![Maintainer][img-maintainer]][link-maintainer]
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiICB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+CiAgIDxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xMiwyLjVMOC40Miw4LjA2TDIsOS43NEw2LjIsMTQuODhMNS44MiwyMS41TDEyLDE5LjA5TDE4LjE4LDIxLjVMMTcuOCwxNC44OEwyMiw5Ljc0TDE1LjU4LDguMDZMMTIsMi41TTkuMzgsMTAuNUMxMCwxMC41IDEwLjUsMTEgMTAuNSwxMS42M0ExLjEyLDEuMTIgMCAwLDEgOS4zOCwxMi43NUM4Ljc1LDEyLjc1IDguMjUsMTIuMjUgOC4yNSwxMS42M0M4LjI1LDExIDguNzUsMTAuNSA5LjM4LDEwLjVNMTQuNjMsMTAuNUMxNS4yNSwxMC41IDE1Ljc1LDExIDE1Ljc1LDExLjYzQTEuMTIsMS4xMiAwIDAsMSAxNC42MywxMi43NUMxNCwxMi43NSAxMy41LDEyLjI1IDEzLjUsMTEuNjNDMTMuNSwxMSAxNCwxMC41IDE0LjYzLDEwLjVNOSwxNUgxNUMxNC41LDE2LjIxIDEzLjMxLDE3IDEyLDE3QzEwLjY5LDE3IDkuNSwxNi4yMSA5LDE1WiIgLz4KPC9zdmc+&maxAge=300)](#contributors-)
-[![PRs Welcome][img-prs]](#contributing-)
+[![PRs Welcome][img-prs]][link-prs]
 [![License][img-license]][link-license]
 [![Tweet][img-twitter]][link-twitter]
 
@@ -96,13 +96,6 @@ sensor:
 <p align="right"><a href="#top" title="Back to top">🔝</a></p>
 
 
-## Contributing 📝
-
-Want to suggest some code improvements? [Check out the quick contributing guide](./CONTRIBUTING.md)! 😃
-
-<p align="right"><a href="#top" title="Back to top">🔝</a></p>
-
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -113,7 +106,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://allcontributors.org) specification. Contributions of any kind are welcome! 😃
+This project follows the [all-contributors](https://allcontributors.org) specification. Want to suggest some code improvements? [Check out the quick contributing guide!](./CONTRIBUTING.md) Contributions of any kind are welcome! 😃
 
 <p align="right"><a href="#top" title="Back to top">🔝</a></p>
 
