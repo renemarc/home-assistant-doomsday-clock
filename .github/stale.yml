@@ -8,9 +8,19 @@ daysUntilClose: 14
 
 # Issues with these labels will never be considered stale
 exemptLabels:
+  - discussion
   - enhancement
   - pinned
   - security
+
+ # Set to true to ignore issues in a project (defaults to false)
+exemptProjects: true
+
+ # Set to true to ignore issues in a milestone (defaults to false)
+exemptMilestones: false
+
+ # Set to true to ignore issues with an assignee (defaults to false)
+exemptAssignees: false
 
 # Label to use when marking an issue as stale
 staleLabel: wontfix
@@ -23,5 +33,11 @@ markComment: >
 
 # Comment to post when closing a stale issue. Set to `false` to disable
 closeComment: >
-  I'm a bot! Beep boop! Closing this issue due to inactivity. Feel free to
-  re-open it should it is still be relevant. 🤖
+  Closing this issue due to inactivity. Feel free to re-open it should it still
+  be relevant.
+
+ # Limit the number of actions per hour, from 1-30. Default is 30
+limitPerRun: 30
+
+ # Limit to only `issues` or `pulls`
+only: issues
