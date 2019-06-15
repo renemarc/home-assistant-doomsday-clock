@@ -4,8 +4,8 @@
     "local_location": "/custom_components/doomsday_clock/sensor.py",
     "remote_location": "https://raw.githubusercontent.com/renemarc/home-assistant-doomsday-clock/master/custom_components/doomsday_clock/sensor.py",
     "resources": [],
-    "updated_at": "2019-06-03",
-    "version": "2.0.1",
+    "updated_at": "2019-06-15",
+    "version": "2.1.0",
     "visit_repo": "https://github.com/renemarc/home-assistant-doomsday-clock"
   }
 }
