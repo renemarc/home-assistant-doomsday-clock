@@ -57,12 +57,12 @@ The clock doesn't change often, at most once a year, and offers no API. Since we
 To enable the Doomsday Clock sensor in your installation:
 
 1. Install the component using one of these methods:
-    - **Using [HACS (Home Assistant Community Store)](https://custom-components.github.io/hacs/):**  
+    - **Using [HACS (Home Assistant Community Store)][link-hacs]:**  
     Add the following URL as a _custom integration repository_ through the Community Store interface.
         ```html
         https://github.com/renemarc/home-assistant-doomsday-clock
         ```
-    - **Using [Custom Updater](https://github.com/custom-components/custom_updater):**  
+    - **Using [Custom Updater](https://github.com/custom-components/custom_updater) (now deprecated):**  
     Add the following to your `configuration.yaml` file.
         ```yaml
         custom_updater:
@@ -177,7 +177,7 @@ Link references.
 [link-contributors]:https://github.com/renemarc/home-assistant-doomsday-clock/#contributors-
 [link-custom-updater]:https://github.com/custom-components/custom_updater
 [link-forum]:https://community.home-assistant.io/t/doomsday-clock-custom-sensor/40758
-[link-hacs]:https://custom-components.github.io/hacs/
+[link-hacs]:https://hacs.xyz/
 [link-hass]:https://home-assistant.io/
 [link-license]:LICENSE
 [link-maintainer]:https://github.com/renemarc/
