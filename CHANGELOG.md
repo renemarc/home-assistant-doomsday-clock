@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning][link-semver].
 
 - This changelog based on [Keep a Changelog][link-keepachangelog].
 
+### Changed
+
+- Updated [Code of Conduct](./CODE_OF_CONDUCT.md) to [Contributor Covenant v2](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).
+
 
 ## [v2.1.0] — 2019-06-15
 
