@@ -3,6 +3,7 @@
 </h1>
 
 [![GitHub Release][img-release]][link-release]
+[![Commits to be deployed][badge-unreleased]][link-unreleased]
 [![Sensor][img-hass]][link-hass]
 [![Custom Updater][img-custom-updater]][link-custom-updater]
 [![Home Assistant Community Store][img-hacs]][link-hacs]
@@ -166,6 +167,8 @@ Image references.
 [img-release]:https://img.shields.io/github/release/renemarc/home-assistant-doomsday-clock/all.svg?logo=git&logoColor=white&maxAge=21600
 [img-twitter]:https://img.shields.io/twitter/url/http/shields.io.svg?style=social
 
+[badge-unreleased]:https://img.shields.io/github/commits-since/renemarc/home-assistant-doomsday-clock/latest.svg?label=commits%20to%20be%20deployed&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KCTxwYXRoIGZpbGw9IiNmZmZmZmYiIGQ9Ik0xMy41LDhIMTJWMTNMMTYuMjgsMTUuNTRMMTcsMTQuMzNMMTMuNSwxMi4yNVY4TTEzLDNBOSw5IDAgMCwwIDQsMTJIMUw0Ljk2LDE2LjAzTDksMTJINkE3LDcgMCAwLDEgMTMsNUE3LDcgMCAwLDEgMjAsMTJBNyw3IDAgMCwxIDEzLDE5QzExLjA3LDE5IDkuMzIsMTguMjEgOC4wNiwxNi45NEw2LjY0LDE4LjM2QzguMjcsMjAgMTAuNSwyMSAxMywyMUE5LDkgMCAwLDAgMjIsMTJBOSw5IDAgMCwwIDEzLDMiIC8+Cjwvc3ZnPgo=&cacheSeconds=300
+
 <!--
 Link references.
 -->
@@ -180,3 +183,4 @@ Link references.
 [link-maintainer]:https://github.com/renemarc/
 [link-release]:https://github.com/renemarc/home-assistant-doomsday-clock/releases/latest
 [link-twitter]:https://twitter.com/intent/tweet?text=%F0%9F%95%9A%20Display%20the%20Doomsday%20Clock%20inside%20your%20Home%20Assistant%27s%20%E2%80%A6fallout%20shelter%3F%20%F0%9F%98%B1&url=https://github.com/renemarc/home-assistant-doomsday-clock&via=renemarc&hashtags=HomeAssistant,Python,Doomsday,Doomsday_Clock,Peace
+[link-unreleased]:https://github.com/renemarc/countdoom/compare/v2.1.0...master
