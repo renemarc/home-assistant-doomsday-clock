@@ -3,7 +3,7 @@
   "name": "Doomsday Clock",
   "documentation": "https://github.com/renemarc/home-assistant-doomsday-clock",
   "requirements": [
-    "beautifulsoup4==4.7.1"
+    "countdoom==0.2.1"
   ],
   "dependencies": [],
   "codeowners": [
