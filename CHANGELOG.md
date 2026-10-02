@@ -10,10 +10,21 @@ and this project adheres to [Semantic Versioning][link-semver].
 ### Added
 
 - This changelog based on [Keep a Changelog][link-keepachangelog].
+- Regression tests for countdown parsing, asynchronous updates, and failure handling.
 
 ### Changed
 
 - Updated [Code of Conduct](./CODE_OF_CONDUCT.md) to [Contributor Covenant v2](https://www.contributor-covenant.org/version/2/0/code_of_conduct/).
+- Fetch the current-setting heading from the main Doomsday Clock page instead of selecting the first historical announcement.
+- Update Beautiful Soup to the version used by Home Assistant Core 2026.9's Scrape integration.
+
+### Fixed
+
+- Replace obsolete internal REST APIs with Home Assistant's shared asynchronous HTTP client and modern sensor properties.
+- Parse countdowns expressed in seconds, whole minutes, and half minutes.
+- Handle HTTP errors, timeouts, changed markup, and invalid templates by marking the sensor unavailable rather than crashing.
+- Keep the clock-face attribute based on the source countdown, even when a template changes the sensor value.
+- Enable TLS certificate verification and avoid blocking HTML parsing on the event loop.
 
 
 ## [v2.1.0] — 2019-06-15

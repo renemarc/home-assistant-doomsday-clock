@@ -1,0 +1,3 @@
+aiohttp
+voluptuous
+beautifulsoup4==4.13.3

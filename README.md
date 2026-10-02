@@ -103,9 +103,52 @@ sensor:
 - **scan_interval** _(number) (optional)_  
   Number of seconds between polls. (minimum = `21600` seconds [6 hours])
 - **unit_of_measurement** _(string) (optional)_  
-  Custom unit of measurement for the value. (default = `min`)
+  Custom unit label for the value. (default = `min`) Changing the label does not convert the value; use `value_template` for conversion.
 - **value_template** _([template](https://home-assistant.io/docs/configuration/templating/)) (optional)_  
-  Custom template to manipulate the state of the sensor.
+  Custom template to manipulate the numeric state of the sensor. `value` is always the source countdown in minutes, including fractional minutes when the source reports seconds. The template must return a finite number. Its result is used directly, with `unit_of_measurement` as the output label.
+
+To display the countdown in seconds, convert minutes using a template:
+
+```yaml
+sensor:
+  - platform: doomsday_clock
+    scan_interval: 86400
+    unit_of_measurement: sec
+    value_template: "{{ value | float * 60 }}"
+```
+
+For a source countdown of 85 seconds, this configuration reports `85 sec`, while the default configuration reports `85 / 60` minutes. Setting only `unit_of_measurement: sec` would leave that minutes value unchanged and simply label it as seconds. The `countdown` and `time` attributes always describe the original source setting, regardless of the configured unit or template; the clock-face time remains `23:58:35`.
+
+### Updating older installations
+
+Replace the **entire** `custom_components/doomsday_clock/` folder, including `clock.py` and `manifest.json`, then restart Home Assistant. Existing YAML configuration remains valid. Home Assistant installs the updated Beautiful Soup requirement during startup.
+
+This version uses Home Assistant's shared asynchronous HTTP session and `SensorEntity` properties instead of the obsolete internal `RestData` interface and `device_state_attributes` property.
+
+### Troubleshooting
+
+If the sensor is unavailable, check **Settings → System → Logs** for `doomsday_clock`:
+
+- **HTTP 403 / Forbidden:** The Bulletin may be blocking automated requests with Cloudflare. Updating the integration does not bypass this restriction. Confirm whether the source is accessible from the Home Assistant host; a JavaScript/browser challenge needs to be resolved by the website, not by disabling TLS verification.
+- **Current-setting heading not found:** The website layout may have changed, or the response may be a challenge page. The integration deliberately does not fall back to historical settings.
+- **Invalid template:** Ensure `value_template` returns a finite numeric value, not a formatted time, `unknown`, `NaN`, or infinity.
+
+Failed updates mark the sensor unavailable. Requests are limited to once every six hours per sensor; the next attempt occurs at the next configured poll after that limit. Restarting Home Assistant allows a fresh attempt.
+
+When reporting an issue, include the Home Assistant Core version, the full error/traceback, and the sensor's YAML configuration with any sensitive values removed.
+
+### Local regression tests
+
+From the repository root, using a Python virtual environment:
+
+```sh
+python -m pip install -r requirements-test.txt
+python -B -m unittest discover -s tests -v
+```
+
+Parser tests use real Beautiful Soup. Sensor tests mock the Home Assistant API and HTTP responses; they do not replace testing inside a running Home Assistant installation.
+
+The [GitHub Actions test workflow](./.github/workflows/tests.yml) runs this suite on Python 3.12, 3.13, and 3.14 for pushes and pull requests. It can also be started manually from the repository's Actions tab.
 
 <p align="right"><a href="#top" title="Back to top">🔝</a></p>
 

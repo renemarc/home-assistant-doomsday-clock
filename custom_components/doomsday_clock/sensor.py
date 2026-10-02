@@ -1,211 +1,137 @@
 """Sensor platform for Doomsday Clock."""
+
 import datetime
 import logging
-import re
+import math
+import time
 
+import aiohttp
 import voluptuous as vol
 
-from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.components.rest.sensor import RestData
+from homeassistant.components.sensor import PLATFORM_SCHEMA, SensorEntity
 from homeassistant.const import (
-    ATTR_ATTRIBUTION, CONF_NAME, CONF_ICON, CONF_UNIT_OF_MEASUREMENT,
-    CONF_VALUE_TEMPLATE, STATE_UNKNOWN)
-import homeassistant.helpers.config_validation as cv
-from homeassistant.helpers.entity import Entity
-from homeassistant.util import Throttle
+    ATTR_ATTRIBUTION,
+    CONF_ICON,
+    CONF_NAME,
+    CONF_UNIT_OF_MEASUREMENT,
+    CONF_VALUE_TEMPLATE,
+)
+from homeassistant.exceptions import TemplateError
+from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-VERSION = '2.1.0'
+from .clock import extract_countdown, minutes_to_time
 
 _LOGGER = logging.getLogger(__name__)
 
-DOMAIN = 'sensor'
-
 DEFAULT_NAME = "Doomsday Clock"
-DEFAULT_ICON = 'mdi:nuke'
-DEFAULT_UNIT_OF_MEASUREMENT = 'min'
+DEFAULT_ICON = "mdi:nuke"
+DEFAULT_UNIT_OF_MEASUREMENT = "min"
 
 CONF_ATTRIBUTION = "Threat assessment by the Bulletin of the Atomic Scientists"
-CONF_RESOURCE = 'https://thebulletin.org/doomsday-clock/past-announcements/'
-CONF_SELECTOR = '.uabb-infobox-title'
+CONF_RESOURCE = "https://thebulletin.org/doomsday-clock/"
 
 MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(hours=6)
+SCAN_INTERVAL = MIN_TIME_BETWEEN_UPDATES
+REQUEST_TIMEOUT = aiohttp.ClientTimeout(total=30)
 
-PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
-    vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
-    vol.Optional(CONF_ICON, default=DEFAULT_ICON): cv.string,
-    vol.Optional(CONF_UNIT_OF_MEASUREMENT,
-        default=DEFAULT_UNIT_OF_MEASUREMENT): cv.string,
-    vol.Optional(CONF_VALUE_TEMPLATE): cv.template,
-})
+PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
+    {
+        vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
+        vol.Optional(CONF_ICON, default=DEFAULT_ICON): cv.string,
+        vol.Optional(
+            CONF_UNIT_OF_MEASUREMENT, default=DEFAULT_UNIT_OF_MEASUREMENT
+        ): cv.string,
+        vol.Optional(CONF_VALUE_TEMPLATE): cv.template,
+    }
+)
 
-def setup_platform(hass, config, add_entities, discovery_info=None):
-    """Set up the Doomsday Clock sensor."""
-    name = config.get(CONF_NAME)
-    resource = CONF_RESOURCE
-    method = 'GET'
-    selector = CONF_SELECTOR
-    payload = headers = auth = None
-    verify_ssl = False
-    unit_of_measurement = config.get(CONF_UNIT_OF_MEASUREMENT)
-    icon = config.get(CONF_ICON)
+
+async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
+    """Set up the Doomsday Clock sensor using Home Assistant's HTTP session."""
     value_template = config.get(CONF_VALUE_TEMPLATE)
-
     if value_template is not None:
         value_template.hass = hass
 
-    rest = RestData(method, resource, auth, headers, payload, verify_ssl)
-    rest.update()
+    async_add_entities(
+        [
+            DoomsdayClockSensor(
+                async_get_clientsession(hass),
+                config[CONF_NAME],
+                config[CONF_UNIT_OF_MEASUREMENT],
+                config[CONF_ICON],
+                value_template,
+            )
+        ],
+        True,
+    )
 
-    if rest.data is None:
-        _LOGGER.error("Unable to fetch URL: %s", resource)
-        return False
 
-    add_entities([
-        DoomsdayClockSensor(rest, name, selector, unit_of_measurement, icon,
-            value_template)
-        ], True)
-
-class DoomsdayClockSensor(Entity):
+class DoomsdayClockSensor(SensorEntity):
     """Representation of a Doomsday Clock sensor."""
 
-    def __init__(self, rest, name, selector, unit_of_measurement, icon,
-        value_template):
-        """Initialize a Doomsday Clock sensor."""
-        self.rest = rest
-        self._name = name
-        self._unit_of_measurement = unit_of_measurement
-        self._icon = icon
+    def __init__(self, session, name, unit_of_measurement, icon, value_template):
+        """Initialize the sensor without fetching data."""
+        self._session = session
+        self._attr_name = name
+        self._attr_native_unit_of_measurement = unit_of_measurement
+        self._attr_icon = icon
+        self._attr_native_value = None
+        self._attr_available = False
         self._value_template = value_template
-        self._selector = selector
         self._sentence = None
-        self._state = STATE_UNKNOWN
+        self._minutes = None
+        self._last_update = None
 
     @property
-    def name(self):
-        """Return the name of the sensor."""
-        return self._name
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit_of_measurement of the sensor."""
-        return self._unit_of_measurement
-
-    @property
-    def icon(self):
-        """Icon to use in the frontend, if any."""
-        return self._icon
-
-    @property
-    def device_state_attributes(self):
-        """Return the state attributes."""
+    def extra_state_attributes(self):
+        """Return the source countdown and clock face, independent of templates."""
         return {
             ATTR_ATTRIBUTION: CONF_ATTRIBUTION,
-            'countdown': self._sentence,
-            'time': self.numberToTime(),
+            "countdown": self._sentence,
+            "time": minutes_to_time(self._minutes),
         }
 
-    @property
-    def sentence(self):
-        return self._sentence
+    async def async_update(self):
+        """Fetch and parse the current setting without blocking the event loop."""
+        now = time.monotonic()
+        if (
+            self._last_update is not None
+            and now - self._last_update < MIN_TIME_BETWEEN_UPDATES.total_seconds()
+        ):
+            return
+        self._last_update = now
 
-    def numberStringToInt(self, value):
-        """Convert textual numbers into integers."""
-        switcher = {
-            'eight': 8,
-            'five': 5,
-            'four': 4,
-            'nine': 9,
-            'one': 1,
-            'seven': 7,
-            'six': 6,
-            'three': 3,
-            'two': 2,
-            'zero': 0,
-        }
-
-        return switcher.get(value.lower(), None)
-
-    def sentenceToNumber(self, sentence):
-        """Convert Doomsday Clock string to a number of minutes to midnight."""
-        pattern = (
-            r"(?:(?P<integer>\d+)"
-            r"|(?P<string>zero|one|two|three|four|five|six|seven|eight|nine)"
-            r"(?P<andhalf>.*?half)"
-            r"|(?P<half>half)) (?:minutes|a minute) to midnight"
-            )
-        result = re.search(pattern, sentence, re.M | re.I)
-
-        if result is None:
-            _LOGGER.error(
-                "Could not find any regex pattern in sentence: %s", sentence)
-            return None
-
-        countdown = 0
-        # Integer minute.
-        if (result.group('integer')):
-            countdown = int(result.group('integer'))
-        # String minute.
-        if (result.group('string')):
-            countdown = self.numberStringToInt(result.group('string'))
-        # Half minute.
-        if (result.group('andhalf') or result.group('half')):
-            countdown += 0.5
-
-        return countdown
-
-    def numberToTime(self):
-        """Convert a number of minutes to midnight into 24h format."""
-        if self._state is not STATE_UNKNOWN:
-            midnight = datetime.datetime.combine(datetime.date.today() +
-                datetime.timedelta(days=1), datetime.time(0, 0, 0, 0))
-            minutes = self._state // 1
-            seconds = (self._state - minutes) * 60
-            delta = datetime.timedelta(minutes=minutes, seconds=seconds)
-
-            return (midnight - delta).strftime('%H:%M:%S')
-
-    @Throttle(MIN_TIME_BETWEEN_UPDATES)
-    def update(self):
-        """Get the latest data from the source and updates the state."""
-        self.rest.update()
-
-        from bs4 import BeautifulSoup
-
-        # Convert HTML into parse tree.
-        raw_data = BeautifulSoup(self.rest.data, 'html.parser')
-
-        # Find the first match, which is the current Doomsday Clock value.
         try:
-            sentence = raw_data.select(self._selector)[0].text.strip()
-            if not sentence:
-                raise ValueError('Sentence is empty')
-            self._sentence = sentence
-            _LOGGER.debug("Sentence found: %s", self._sentence)
-        except IndexError:
-            _LOGGER.error(
-                "No sentence found using selector: %s. Did the design change?",
-                self._selector)
-            return False
-        except ValueError:
-            _LOGGER.error(
-                "Empty sentence found using selector %s. Did the design change?"
-                , self._selector)
-            return False
-
-        # Convert the Doomsday Clock string into number of minutes to midnight.
-        value = self.sentenceToNumber(self._sentence)
-        _LOGGER.debug("Numeric value: %s", value)
-
-        if value is not None:
-            # Optionally parse a custom template.
+            async with self._session.get(
+                CONF_RESOURCE, timeout=REQUEST_TIMEOUT
+            ) as response:
+                response.raise_for_status()
+                html = await response.text()
+            sentence, minutes = await self.hass.async_add_executor_job(
+                extract_countdown, html
+            )
+            value = minutes
             if self._value_template is not None:
-                self._state = \
-                    self._value_template.render_with_possible_json_value(value,
-                    STATE_UNKNOWN)
-            else:
-                self._state = value
+                value = self._value_template.async_render({"value": minutes})
+                if isinstance(value, bool):
+                    raise ValueError("value_template must return a finite number")
+                value = float(value)
+                if not math.isfinite(value):
+                    raise ValueError("value_template must return a finite number")
+        except (aiohttp.ClientError, TimeoutError, UnicodeError) as err:
+            self._attr_available = False
+            self._attr_native_value = None
+            _LOGGER.error("Unable to fetch Doomsday Clock URL %s: %s", CONF_RESOURCE, err)
+            return
+        except (ValueError, TypeError, TemplateError) as err:
+            self._attr_available = False
+            self._attr_native_value = None
+            _LOGGER.error("Unable to update Doomsday Clock: %s", err)
+            return
+
+        self._sentence = sentence
+        self._minutes = minutes
+        self._attr_native_value = value
+        self._attr_available = True
+        _LOGGER.debug("Doomsday Clock countdown: %s (%s minutes)", sentence, minutes)
